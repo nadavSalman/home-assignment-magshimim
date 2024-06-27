@@ -27,6 +27,7 @@ class DataLoader:
                 
                 match line[0]:  
                     case "#":
+                        line = line[1:]  # cut off '#'
                         # Album Parsing
                         albome_name, published_year = line.split('::')
                         self.albums.append(Album(
@@ -35,6 +36,7 @@ class DataLoader:
                         ))
                         active_album = self.albums[-1] # Point to the last album
                     case "*":
+                        line = line[1:] # cut off '*'
                         # Song Parsing
                         song_name, singer, duration, first_line = line.split('::')
                         
@@ -43,14 +45,14 @@ class DataLoader:
                                 song_name=song_name,
                                 singer=singer,
                                 duration=duration,
-                                song_lines=[]
+                                lines=[]
                             )
                         else:                   
                             active_song = Song(
                                 song_name=song_name,
                                 singer=singer,
                                 duration=duration,
-                                song_lines=[first_line]
+                                lines=[first_line]
                             )
                             
                         # Update song insied the album
@@ -59,12 +61,12 @@ class DataLoader:
                         
                     case _: # default - middle of the song
                         active_song.add_song_line(line)
-                        
-                        
-                # print(f"line.strip() : {line.strip()} | {line[-1]}")
     
-    def get_albums(self) -> list:   
+    def get_albums(self) -> list[Album]:   
         return self.albums
     
-    def get_sorted_songs_list(self) -> list:
+    def get_sorted_songs_list(self) -> list[Song]:
         return self.sorted_songs_list
+    
+    def get_list_of_albums_names(self) -> list[str]:
+        return [album.get_album_name() for album in self.albums]

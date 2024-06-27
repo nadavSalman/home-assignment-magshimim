@@ -58,10 +58,10 @@ Schema from `Pink_Floyd_DB.txt`
 
 ```text
  # [Folow by the album name]::[Published year]
-   (Optinal){
-      
-  }
+
  *[Song name]::[singer]::[duration ]::[First line on the song]
+ OR / AND
+ *[Song name]::[singer]::[duration ]::instrumental
  ...
  [Last line on the song]
   *[Song name]::[singer]::[duration ]::[First line on the song]

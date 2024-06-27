@@ -1,9 +1,9 @@
 class Song:
-    def __init__(self, song_name: str, singer: str, duration: str, song_lines: list[str]) -> None:
+    def __init__(self, song_name: str, singer: str, duration: str, lines: list[str]) -> None:
         self.song_name = song_name
         self.singer = singer
         self.duration = duration
-        self.song_lines = song_lines
+        self.lines = lines
 
     def get_song_name(self) -> str:
         return self.song_name
@@ -23,11 +23,11 @@ class Song:
     def set_duration(self, duration: str) -> None:
         self.duration = duration
 
-    def get_song_lines(self) -> list[str]:
-        return self.song_lines
+    def get_lines(self) -> list[str]:
+        return self.lines
 
-    def set_song_lines(self, song_lines: list[str]) -> None:
-        self.song_lines = song_lines
+    def set_lines(self, lines: list[str]) -> None:
+        self.lines = lines
         
     def add_song_line(self, song_line:str) -> None:
-        self.song_lines.append(song_line)
+        self.lines.append(song_line)
